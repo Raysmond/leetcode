@@ -22,17 +22,16 @@ Your algorithm should use only constant space. You may not modify the values in 
 class Solution {
 public:
     ListNode *swapPairs(ListNode *head) {
-        if(head==NULL) return NULL;
+        if(!head) return NULL;
         ListNode *p = head, *q = head->next,*r=NULL;
-        if(q!=NULL) head = q;
-        while(p!=NULL&&q!=NULL){
+        if(q) head = q;
+        while(p&&q){
             p->next = q->next;
             q->next = p;
-            if(r!=NULL) r->next = q;
+            if(r) r->next = q;
             r = p;
             p = p->next;
-            if(p!=NULL) q = p->next;
-            else q = NULL;
+            if(p) q = p->next;
         }
         return head;
     }
