@@ -11,6 +11,7 @@ Input: `numbers={2, 7, 11, 15}, target=9`
 Output: `index1=1, index2=2`
 
 ##Solution
+- Solution one
 `Hash`
 ```cpp
 class Solution {
@@ -43,6 +44,27 @@ public:
                 res.push_back(i+1);
                 break;
             }
+        }
+        return res;
+    }
+};
+```
+
+- Solution two
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int> &numbers, int target){
+        unordered_map<int,int> dict;
+        unordered_map<int,int>::const_iterator idx;
+        vector<int> res;
+        for(int i=0;i<numbers.size();++i){
+            idx = dict.find(target - numbers[i]);
+            if(idx!=dict.end()){
+                res.push_back(idx->second+1);
+                res.push_back(i+1);
+                break;
+            } else dict[numbers[i]] = i;
         }
         return res;
     }
