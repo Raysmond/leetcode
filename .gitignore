@@ -22,3 +22,10 @@
 
 # others
 *~
+
+tmp
+tmp/*
+
+tmp/triangle/triangle.xcodeproj/project.xcworkspace/xcshareddata/triangle.xccheckout
+
+tmp/triangle/triangle/main.cpp
