@@ -21,31 +21,20 @@ Given 1->1->2->3->3, return 1->2->3.
 class Solution {
 public:
     ListNode *deleteDuplicates(ListNode *head) {
-        if(head==NULL||head->next==NULL)
+        if(!head || !head->next)
             return head;
-        ListNode *p = head,*q = head->next;
-        int count = 0;
-        for(;q!=NULL;q = q->next){
-            if(q->val != p->val){
-                if(count!=0){
-                    int i = 0;
-                    for(ListNode *s = p->next;i<count;i++,s=s->next){
-                        delete(s);
-                    }
-                    count = 0;
-                    p->next = q;
-                }
-                p = q;
-            } else {
-                ++count;
+        
+        ListNode *p = head->next, *q = head;
+        while(p){
+            if(p->val == q->val){
+                ListNode *t = p;
+                q->next = p->next;
+                p = p->next;
+                delete(t);
+                continue;
             }
-        }
-        if(count>0){
-            int i = 0;
-            for(ListNode *s = p->next;i<count;i++,s=s->next){
-                delete(s);
-            }
-            p->next = q;
+            q = p;
+            p = p->next;
         }
         return head;
     }

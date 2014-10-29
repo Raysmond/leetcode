@@ -39,13 +39,13 @@ class Solution {
 public:
     bool isSymmetric(TreeNode *root) {
         if(!root) return true;
-        else return isSymmetricDFS(root->left,root->right);
+        return dfs(root->left, root->right);
     }
-    bool isSymmetricDFS(TreeNode *t1, TreeNode *t2){
-        if(!t1 && !t2) return true;
-        if(!t1 || !t2 || t1->val!=t2->val) return false;
-        return isSymmetricDFS(t1->left, t2->right) && 
-               isSymmetricDFS(t1->right, t2->left);
+    
+    bool dfs(TreeNode *n1, TreeNode *n2){
+        if(!n1&&!n2) return true;
+        if(!n1||!n2 ||n1->val != n2->val) return false;
+        return dfs(n1->left, n2->right) && dfs(n1->right, n2->left);
     }
 };
 ```

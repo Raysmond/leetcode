@@ -19,6 +19,7 @@ public:
             } else{
                 digits[i]+=carry;
                 carry = 0;
+                break;
             }
         }
         if(carry>0) digits.insert(digits.begin(),1);
